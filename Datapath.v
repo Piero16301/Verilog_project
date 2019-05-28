@@ -6,7 +6,7 @@ module datapath(clk,result);
 
     reg [7:0] pc =  8'd0;
     reg [2:0] add_pc = 3'b100;
-    reg [31:0] instruction,s_extend;
+    reg [31:0] instruction,s_extend,reg_temp;
     reg [5:0] opcode;
     reg [32:0] temp_op;
     reg [15:0] extend_16 = 16'd0;
@@ -32,7 +32,7 @@ always @(posedge clk) begin
 
     case(opcode)
     
-    6'b000000: begin
+    6'b000000: begin //add
         pos_read1 = {instruction[25:21]};
         pos_read2 = {instruction[20:16]};
         pos_write = {instruction[15:11]};
@@ -41,7 +41,7 @@ always @(posedge clk) begin
         overflow = temp_op[32];
     end
 
-    6'b000001: begin
+    6'b000001: begin //sub
         pos_read1 = {instruction[25:21]};
         pos_read2 = {instruction[20:16]};
         pos_write = {instruction[15:11]};
@@ -50,7 +50,7 @@ always @(posedge clk) begin
         overflow = temp_op[32];
     end
 
-    6'b000010: begin
+    6'b000010: begin //and
         pos_read1 = {instruction[25:21]};
         pos_read2 = {instruction[20:16]};
         pos_write = {instruction[15:11]};
@@ -58,7 +58,7 @@ always @(posedge clk) begin
         overflow = 1'b0;
     end
 
-    6'b000011: begin
+    6'b000011: begin //nor
         pos_read1 = {instruction[25:21]};
         pos_read2 = {instruction[20:16]};
         pos_write = {instruction[15:11]};
@@ -66,7 +66,7 @@ always @(posedge clk) begin
         overflow = 1'b0;
     end
 
-    6'b000100: begin
+    6'b000100: begin //or
         pos_read1 = {instruction[25:21]};
         pos_read2 = {instruction[20:16]};
         pos_write = {instruction[15:11]};
@@ -74,7 +74,7 @@ always @(posedge clk) begin
         overflow = 1'b0;
     end
 
-    6'b000101: begin
+    6'b000101: begin //slt
         pos_read1 = {instruction[25:21]};
         pos_read2 = {instruction[20:16]};
         pos_write = {instruction[15:11]};
@@ -82,7 +82,7 @@ always @(posedge clk) begin
         overflow = 1'b0;
     end
 
-    6'b000110: begin
+    6'b000110: begin //addi
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
@@ -91,7 +91,7 @@ always @(posedge clk) begin
         overflow = temp_op[32];
     end
 
-    6'b000111: begin
+    6'b000111: begin //subi
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
@@ -100,7 +100,7 @@ always @(posedge clk) begin
         overflow = temp_op[32];
     end
 
-    6'b001000: begin
+    6'b001000: begin //andi
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
@@ -108,7 +108,7 @@ always @(posedge clk) begin
         overflow = 1'b0;
     end
 
-    6'b001001: begin
+    6'b001001: begin //ori
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
@@ -116,7 +116,7 @@ always @(posedge clk) begin
         overflow = 1'b0;
     end
 
-    6'b001010: begin
+    6'b001010: begin //slti
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
@@ -124,7 +124,7 @@ always @(posedge clk) begin
         overflow = 1'b0;
     end
 
-    6'b001011: begin
+    6'b001011: begin //lb
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
@@ -132,7 +132,7 @@ always @(posedge clk) begin
         overflow = 1'b0;
     end
 
-    6'b001100: begin
+    6'b001100: begin //lh
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
@@ -140,7 +140,7 @@ always @(posedge clk) begin
         overflow = 1'b0;
     end
 
-    6'b001101: begin
+    6'b001101: begin //lw
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
@@ -148,23 +148,35 @@ always @(posedge clk) begin
         overflow = 1'b0;
     end
 
-    6'b001110: begin
-        
+    6'b001110: begin //lui
+        pos_read1 = {instruction[25:21]};
+        result = {instruction[15:0],extend_16};
     end
 
-    6'b001111: begin
-        
+    6'b001111: begin //sb
+        pos_write = {instruction[25:21]};
+        pos_read1 = {instruction[20:16]};
+        s_extend = {extend_16,instruction[15:0]};
+        reg_temp = reg_file[pos_read1];
     end
 
-    6'b010000: begin
-        
+    6'b010000: begin //sh
+        pos_write = {instruction[25:21]};
+        pos_read1 = {instruction[20:16]};
+        s_extend = {extend_16,instruction[15:0]};
+        reg_temp = reg_file[pos_read1];
     end
 
-    6'b010001: begin
-        
+    6'b010001: begin //sw
+        pos_write = {instruction[25:21]};
+        pos_read1 = {instruction[20:16]};
+        s_extend = {extend_16,instruction[15:0]};
+        reg_temp = reg_file[pos_read1];
     end
 
-    6'b010010: begin
+    6'b010010: begin //beq
+        pos_read1 = {instruction[25:21]};
+        pos_read2 = {instruction[20:16]};
         
     end
 
@@ -196,7 +208,23 @@ end
 
 always @(negedge clk) begin
 
-    reg_file[pos_write] <= result;
+    if (opcode < 15)
+        reg_file[pos_write] <= result; //Arithmetic operations
+
+    else if (opcode == 15)
+        data_memory[pos_write + s_extend] <= reg_temp[7:0]; //Store byte
+
+    else if (opcode == 16) begin
+        data_memory[pos_write + s_extend] <= reg_temp[7:0]; //Store halfword
+        data_memory[pos_write + s_extend + 1] <= reg_temp[15:8];
+    end
+
+    else if (opcode == 17) begin
+        data_memory[pos_write + s_extend] <= reg_temp[7:0]; //Store word
+        data_memory[pos_write + s_extend + 1] <= reg_temp[15:8];
+        data_memory[pos_write + s_extend + 2] <= reg_temp[23:16];
+        data_memory[pos_write + s_extend + 3] <= reg_temp[31:24];
+    end
 
 end
 
