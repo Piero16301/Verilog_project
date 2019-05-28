@@ -11,7 +11,7 @@ module tb1();
     initial
         begin
             clk = 1;
-            for (i = 0; i < 1; i = i + 1)
+            for (i = 0; i < 19; i = i + 1)
                 begin
                     #5 clk =~ clk;
                 end
