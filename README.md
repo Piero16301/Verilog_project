@@ -1,2 +1,2 @@
 # Verilog_project
-Final projecto of Computer Architecture
+Computer Architecture final project
