@@ -12,7 +12,7 @@ module tb1();
     initial
         begin
             clk = 0;
-            for (i = 0; i < 48; i = i + 1)
+            for (i = 0; i < 2; i = i + 1)
                 begin
                     #5 clk =~ clk;
                 end
