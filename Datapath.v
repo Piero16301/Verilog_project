@@ -1,10 +1,10 @@
-module datapath(clk,result);
+module datapath(clk,result,pc);
 
     input clk;
 
     output reg [31:0] result;
+    output reg [7:0] pc =  8'd0;
 
-    reg [7:0] pc =  8'd0;
     reg [7:0] i_content;
     reg [31:0] instruction,s_extend,reg_temp,sl_branch;
     reg [5:0] opcode;
@@ -153,7 +153,7 @@ always @(posedge clk) begin
     end
 
     6'b001110: begin //lui
-        pos_read1 = {instruction[25:21]};
+        pos_write = {instruction[20:16]};
         result = {instruction[15:0],extend_16};
         overflow = 1'b0;
     end
@@ -230,7 +230,7 @@ always @(posedge clk) begin
         pos_read1 = {instruction[25:21]};
         i_content = reg_file[pos_read1];
         pc = {i_content[7:0]};
-        overflow = temp_op[32];
+        overflow = 1'b0;
     end
     
     endcase
