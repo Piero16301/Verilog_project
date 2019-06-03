@@ -4,8 +4,9 @@ module tb1();
 
     wire [31:0] result;
     wire [7:0] pc;
+    wire [5:0] opcode;
 
-    datapath core_1(clk,result,pc);
+    datapath core_1(clk,result,pc,opcode);
 
     integer i;
 
