@@ -22,7 +22,7 @@ module tb1();
 
     always @(*) begin
         if (clk == 1) begin
-            $monitor("Clock: %b Result: %b PC: %b",clk,result,pc);
+            $monitor("Clock: %b Result: %d PC: %d",clk,result,pc);
             j = j + 1;
         end
 

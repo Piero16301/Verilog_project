@@ -13,7 +13,7 @@ module tb1();
     initial
         begin
             clk = 0;
-            for (i = 0; i < 246; i = i + 1)
+            for (i = 0; i < 270; i = i + 1)
                 begin
                     #5 clk =~ clk;
                 end
