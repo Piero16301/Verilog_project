@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.10)  4 JUL 2019 11:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.10)  4 JUL 2019 23:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -599,17 +599,17 @@ LaTeX Info: Redefining \nameref on input line 13.
 \@outlinefile=\write3
 \openout3 = `conference_041818.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 76.
+LaTeX Font Info:    Try loading font information for U+msa on input line 58.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 76.
+LaTeX Font Info:    Try loading font information for U+msb on input line 58.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (4.57455pt too wide) in paragraph at lines 95--117
+Overfull \hbox (4.57455pt too wide) in paragraph at lines 80--102
  [] 
  []
 
@@ -617,127 +617,127 @@ Overfull \hbox (4.57455pt too wide) in paragraph at lines 95--117
 
 
 ]
-<datapath.png, id=59, 126.7134pt x 95.6373pt>
+<datapath.png, id=55, 126.7134pt x 95.6373pt>
 File: datapath.png Graphic file (type png)
 <use datapath.png>
-Package pdftex.def Info: datapath.png  used on input line 160.
+Package pdftex.def Info: datapath.png  used on input line 140.
 (pdftex.def)             Requested size: 253.42615pt x 191.27408pt.
 
-Overfull \hbox (1.42615pt too wide) in paragraph at lines 160--161
+Overfull \hbox (1.42615pt too wide) in paragraph at lines 140--141
 [][] 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 179.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 150.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-<modelsim_module.png, id=61, 364.36125pt x 280.79906pt>
+<modelsim_module.png, id=56, 364.36125pt x 280.79906pt>
 File: modelsim_module.png Graphic file (type png)
 <use modelsim_module.png>
-Package pdftex.def Info: modelsim_module.png  used on input line 195.
+Package pdftex.def Info: modelsim_module.png  used on input line 166.
 (pdftex.def)             Requested size: 255.05113pt x 196.558pt.
-<factorial_c.png, id=62, 216.81pt x 129.48375pt>
+<factorial_c.png, id=57, 216.81pt x 129.48375pt>
 File: factorial_c.png Graphic file (type png)
 <use factorial_c.png>
-Package pdftex.def Info: factorial_c.png  used on input line 313.
+Package pdftex.def Info: factorial_c.png  used on input line 284.
 (pdftex.def)             Requested size: 173.44823pt x 103.58711pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<factorial_mips.png, id=63, 300.3722pt x 309.40594pt>
+<factorial_mips.png, id=58, 300.3722pt x 309.40594pt>
 File: factorial_mips.png Graphic file (type png)
 <use factorial_mips.png>
-Package pdftex.def Info: factorial_mips.png  used on input line 322.
+Package pdftex.def Info: factorial_mips.png  used on input line 293.
 (pdftex.def)             Requested size: 165.2052pt x 170.17378pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2 <./datapath.png (PNG copy)> <./modelsim_module.png (PNG copy)>]
-Overfull \hbox (4.25441pt too wide) in paragraph at lines 339--355
+
+Overfull \hbox (4.25441pt too wide) in paragraph at lines 310--326
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<ModelSim_testbench1_clock_cycles.png, id=74, 465.99094pt x 392.21532pt>
+<ModelSim_testbench1_clock_cycles.png, id=60, 465.99094pt x 392.21532pt>
 File: ModelSim_testbench1_clock_cycles.png Graphic file (type png)
 <use ModelSim_testbench1_clock_cycles.png>
 Package pdftex.def Info: ModelSim_testbench1_clock_cycles.png  used on input li
-ne 363.
+ne 334.
 (pdftex.def)             Requested size: 191.05751pt x 160.80931pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<ModelSim_factorial4_clock_cycles.png, id=75, 463.7325pt x 381.67593pt>
+[2 <./datapath.png (PNG copy)> <./modelsim_module.png (PNG copy)>]
+<ModelSim_factorial4_clock_cycles.png, id=74, 463.7325pt x 381.67593pt>
 File: ModelSim_factorial4_clock_cycles.png Graphic file (type png)
 <use ModelSim_factorial4_clock_cycles.png>
 Package pdftex.def Info: ModelSim_factorial4_clock_cycles.png  used on input li
-ne 383.
+ne 354.
 (pdftex.def)             Requested size: 231.86568pt x 190.8375pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<factorial_10.png, id=76, 130.98938pt x 137.01187pt>
+<factorial_10.png, id=75, 130.98938pt x 137.01187pt>
 File: factorial_10.png Graphic file (type png)
 <use factorial_10.png>
-Package pdftex.def Info: factorial_10.png  used on input line 390.
+Package pdftex.def Info: factorial_10.png  used on input line 361.
 (pdftex.def)             Requested size: 91.69193pt x 95.90765pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<ModelSim_testbench2_clock_cycles.png, id=78, 460.72125pt x 324.46219pt>
+<ModelSim_testbench2_clock_cycles.png, id=77, 460.72125pt x 324.46219pt>
 File: ModelSim_testbench2_clock_cycles.png Graphic file (type png)
 <use ModelSim_testbench2_clock_cycles.png>
 Package pdftex.def Info: ModelSim_testbench2_clock_cycles.png  used on input li
-ne 397.
+ne 368.
 (pdftex.def)             Requested size: 230.36006pt x 162.23068pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<ModelSim_testbench3_clock_cycles.png, id=79, 467.49657pt x 440.39531pt>
+<ModelSim_testbench3_clock_cycles.png, id=78, 467.49657pt x 440.39531pt>
 File: ModelSim_testbench3_clock_cycles.png Graphic file (type png)
 <use ModelSim_testbench3_clock_cycles.png>
 Package pdftex.def Info: ModelSim_testbench3_clock_cycles.png  used on input li
-ne 403.
+ne 374.
 (pdftex.def)             Requested size: 233.74771pt x 220.19711pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3 <./factorial_c.png> <./factorial_mips.png>]
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 444.
-
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 407.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \hbox (badness 2932) in paragraph at lines 444--445
+Underfull \hbox (badness 2932) in paragraph at lines 407--408
 \OT1/ptm/m/n/8 II-A: The MIPS32\TS1/ptm/m/n/8 ® \OT1/ptm/m/n/8 In-struc-tion Se
 t Man-ual. [on-line] Avail-able
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
+Underfull \hbox (badness 10000) in paragraph at lines 407--408
 \OT1/ptm/m/n/8 at: []$https : / / s3-[]eu-[]west-[]1 . amazonaws . com / downlo
 ads-[]mips / documents /
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 446--447
+[3 <./factorial_c.png> <./factorial_mips.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
 []\OT1/ptm/m/n/8 Mentor.com. (2018). Mod-el-Sim PE Stu-dent Edi-tion. [on-line]
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 446--447
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
 \OT1/ptm/m/n/8 Avail-able at: []$https : / / www . mentor . com / company / hig
 her[]ed /
  []
 
 
-Underfull \hbox (badness 2875) in paragraph at lines 449--450
+Underfull \hbox (badness 2875) in paragraph at lines 412--413
 []\OT1/ptm/m/n/8 Wolframalpha.com (2018). Wol-fram|Alpha: Mak-ing the world's
  []
 
@@ -752,33 +752,33 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 453.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 416.
 [4 <./ModelSim_testbench1_clock_cycles.png (PNG copy)> <./ModelSim_factorial4_c
-lock_cycles.png> <./factorial_10.png>] [5
+lock_cycles.png> <./factorial_10.png> <./ModelSim_testbench2_clock_cycles.png (
+PNG copy)>] [5
 
- <./ModelSim_testbench2_clock_cycles.png (PNG copy)> <./ModelSim_testbench3_clo
-ck_cycles.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 453.
+ <./ModelSim_testbench3_clock_cycles.png (PNG copy)>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 416.
 
 (./conference_041818.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 453.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 453.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 416.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 416.
 Package rerunfilecheck Info: File `conference_041818.out' has not changed.
-(rerunfilecheck)             Checksum: AEA281A38849D78DE12C78C1FD6F2C4A;439.
+(rerunfilecheck)             Checksum: 80A5D38F9FA4F7B2CCFC646A6A7E3030;438.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 453.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 416.
  ) 
 Here is how much of TeX's memory you used:
- 8015 strings out of 492623
- 119032 string characters out of 6129552
- 226602 words of memory out of 5000000
- 11789 multiletter control sequences out of 15000+600000
- 41973 words of font info for 89 fonts, out of 8000000 for 9000
+ 8017 strings out of 492623
+ 119052 string characters out of 6129552
+ 225602 words of memory out of 5000000
+ 11790 multiletter control sequences out of 15000+600000
+ 42488 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,9n,35p,363b,401s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,9n,35p,401b,451s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
@@ -789,10 +789,10 @@ xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on conference_041818.pdf (5 pages, 315402 bytes).
+Output written on conference_041818.pdf (5 pages, 312584 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 132 compressed objects within 2 object streams
+ 156 PDF objects out of 1000 (max. 8388607)
+ 129 compressed objects within 2 object streams
  38 named destinations out of 1000 (max. 500000)
  118 words of extra memory for PDF output out of 10000 (max. 10000000)
 

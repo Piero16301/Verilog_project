@@ -31,13 +31,7 @@ piero.morales@utec.edu.pe}
 \maketitle
 
 \begin{abstract}
-The form, design, and implementation of CPUs have changed over the course of their history, but their
-fundamental operation remains almost unchanged. The CPU has become the nerve center of any computer,
-from mobile devices to supercomputers. From the beginning	of computer era scientists have tried to improve
-processor performance not only increasing the number of transistors, but also by improving the instructions
-that the processor executes. A major change that happened for CPUs is the change from single core to multi core
-that increasing they performance. In this way, Moore's law, that until this moment had traced teh future of processors,
-is discarded.
+Two undergraduates implemented a 32 bits pathline based on RISC MIPS for a computer architecture course. This datapath support instructions R-type, I-type and J-type. This included designing the architecture in Verilog, developing test bench modules for the implementation.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -45,30 +39,18 @@ Computer architecture, risc, verilog, processor, big endgian, microprocessor wit
 \end{IEEEkeywords}
 
 \section{Introduction}	%I. Introduction
-There are two major architectures for CPUs, the Reduced Instruction Set Computer (RISC) and Complex 
-Instruction Set Computer (CISC). RICS design architecture points to solve problems about the CPU time 
-processing  although compare with CISC it increase the lines of code to the software developer, nevertheless 
-the main advantage of using RISC architecture is the reduced amount of clock cycles needed to executed 
-and instruction due to the specialiazed instructions.
-
-In this context we have the 32 bits MIPS Instruction Set Architecture (ISA) \cite{b1} which support all the necesary functions
-needed by the software, MIPS is composed by 32 general-purpose registers and instructions format to clasify
-all the instructions. There are 3 types of instruction formats: the R-Type which uses 3 registers, the I-Type who uses 2
-registers and a 16-bit immediate value and finally we have the J-Type who supports the "jumps" between the lines of
-instructions. 
-
-There is no definite architecture in the present CPU technology, the industry use both RICS and CISC 
-architecture separaredly or in combination, which of those are going to use will depend on the requirement.
-
+The form, design, and implementation of CPUs have changed over the course of their history, but their
+fundamental operation remains almost unchanged. The CPU has become the nerve center of any computer,
+from mobile devices to supercomputers. From the beginning	of computer era scientists have tried to improve
+processor performance not only increasing the number of transistors, but also by improving the instructions
+that the processor executes. A major change that happened for CPUs is the paradigm from a single core to multi core that increased signifcantly its performance. In this way, Moore's law, that until this moment had traced the future of processors,
+is discarded.
 \section{Methodology}	%II. Methodology
 
-Since manufacturing a physical processor require a state-of-the-art technology and also a huge
-amount of money, we use an Hardware Description Language (HDL) to design and simulate our
-processor and all the components related. We choose Verilog \cite{b2} as HDL because is widely used in the 
-industry and the access to the student license for ModelSim \cite{b3}.
+For this project we use a Hardware Description Language (HDL) to design and simulate our
+processor and all its components related. The datapath was coded in Verilog. We choose Verilog \cite{b2} as HDL because is widely used in the industry and it was simulated and tested using test bench modules.
 
-We choose the single cycle as a design metodology with focussing in the basic operations with integers, 
-covering the following R-type, I-type and J-type instructions from the 32 bits MIPS ISA:
+The goal of this project is achieve a better understanding of MIPS single-cycle and implement it with focussing in the basic operations with integers, covering R-type, I-type and J-type instructions for 32 bits MIPS ISA:
 
 \begin{table}[htbp]
 \caption{R Type} %R Type
@@ -78,11 +60,14 @@ covering the following R-type, I-type and J-type instructions from the 32 bits M
 \multicolumn{3}{|c|}{\textbf{Instructions}} \\
 %\cline{2-4} 
 \hline
-ADD&Subtraction(SUB)&AND  \\
+ADD&Subtraction&AND  \\
+&(SUB)&\\
 \hline
-NOR&OR&Set Less Than (SLT) \\
+NOR&OR&Set Less Than\\
+&&(SLT)\\
 \hline
-Jump Register (JR)&& \\
+Jump Register&& \\
+(JR)&&\\
 \hline
 \end{tabular}
 \label{tab_rtype}
@@ -126,36 +111,31 @@ Branch On Equal&Branch On Not Equal&Branch On Greater \\
 %\cline{2-4} 
 \hline
 Jump&Jump and Link&\\
-(J) &(JAL)&\\
+(J) &(JAL)&----\\
 \hline
 \end{tabular}
 \label{tab_itype}
 \end{center}
 \end{table}
 \subsection{Datapath}
-In order to cover all the instructions mentioned we need to model the following components:
+To achieve the goal of supporting all instructions listed before we need to implement the following components:
 
 \begin{itemize}
-\item Instruction Memory, stores the instructions to be executed.
-\item PC Counter, points to the line of the instruction of the program which not 
-necessary always will be the following next since the we are using branchs and
-jumps.
-\item Register File, stores the 32 registers for the MIPS ISA. 
-\item Data Memory, stores the data for the program and also the stack.
-\item Aritmetic Logic Unit (ALU), the "brain" of the processor who make the operations of
-adition, subtraction, the comparation between two numbers, logic AND, logic OR, logic NOR.
-\item Multiplexor 2 to 1, this component indicates which of the 2 inputs input take based on a 
-selector signal i.e. in the selection between the PC Counter, the branch or the jump.
-\item Adder, we use this to add the number 4 to the actual PC counter to point to the next 
-instruction, also is used for the offset to cover the branch instruction.
+\item Aritmetic Logic Unit (ALU), one of the core componentes of the processor who make the operations of addition, subtraction, comparation between two numbers, logic AND, logic OR, logic NOR.
+\item Instruction Memory, stores all the instructions to be read and executed according to the address selected.
+\item PC Counter, a register to hold the address of the current instruction being executed.
+\item Register File, space that stores 32 registers for MIPS ISA, each one of 32 bits.
+\item Data Memory, stores the data to support load and stores instructions.
+\item Multiplexor 2 to 1, determine which of the 2 inputs input select, based on a selector signal i.e. in the selection between the PC Counter, the branch or the jump.
+\item Adder, execute PC + 4 to link the following instruction, also is used for the offset to cover the branch instruction.
 \item Shift Left 2 and 16, to be used to calculate the offset for the branch and load a number 
 up to 32 bits respectively.
-\item Sign extend, this component is used to extend the most significant bit of the number.
+\item Sign extend, used to extend the most significant bit of the number.
 \item and the control component for support all the instructions deciding which signal activate 
 depending on the type of instruction and the operation.
 \end{itemize}
 
-Putting all the components together we get our datapath:
+The structure of the datapath including all the components:
 \begin{figure}[h]
 \includegraphics[scale=2]{datapath.png}
 \caption{Datapath.}
@@ -166,30 +146,21 @@ Putting all the components together we get our datapath:
 %\label{fig_data}
 %\end{figure*}
 
-As we can see all the components are connected using wires.
-\subsection{ModelSim}
-We start developing our components in verilog, in order to maintenance and following the
-standard principles of software developing  we create each module separatedly in its corresponding
-.v file, e.g. regfile.v for the Register File component.
-In total we have the following 17 files for all the modules:
+\subsection{Verilog}
+The implementation in Verilog is in a single file called \verb$Datapath.v$ where is coded the instruction set architecture. Three differents files called \verb$instruction.txt$ are used to test and validate the correct functionality of the implementation along with a file called \verb$Test_datapath.v$
+In total the implementation is composed of the following 5 files:
 
 \begin{table}[htbp]
 \begin{center}
 \begin{tabular}{c c}
-\verb$regfile_lab5.v$&\verb$shift16_module.v$\\
-\verb$alu_lab5.v$&\verb$instrumem.v$\\
-\verb$extendbit_lab5.v$&\verb$ControlDataPath.v$\\
-\verb$alucontrol.v$&\verb$mux31.v$\\
-\verb$Select_word_half.v$&\verb$mux_5bits.v$\\
-\verb$shift_left_2.v$&\verb$pccounter_4.v$\\
-\verb$PC_module.v$&\verb$concatenar.v$\\
-\verb$adder32.v$&\verb$complete_32bits.v$\\
-\verb$proyecto_final.v$&\\
+\verb$Datapath.v$&\verb$(implementation)$\\
+\verb$Test_datapath.v$&\verb$(testing module)$\\
+\verb$instruction.txt$&\verb$(for R-type)$\\
+\verb$instruction.txt$&\verb$(for I-type)$\\
+\verb$instruction.txt$&\verb$(for J-type)$\\
 \end{tabular}
 \end{center}
 \end{table}
-
-To clarify the terms every CPU component will be created in ModelSim as a module \cite{b4}.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.7]{modelsim_module.png}}
@@ -411,17 +382,9 @@ of clock cycles and the time for each file, also the results of the instructions
 %CONCLUSION SECTION
 \section{Conclusion}
 \begin{itemize}
-\item Since the single cycle datapath was the original solution in the early days of RISC architecture nowadays
-is not efficient because it takes 1 cycle per instruction when another aproachs using the pipeline technique
-could reduce the cycle needed per instruction. 
-\item It became mandatory calculate the expected time processing for test our datapath, otherwise we could
-get unexpected result since the execution continue with the next instruction, like for example in our test bench
-for the factorial.
-\item Before start coding in ModelSim we need to decide if we are going to apply the clock edge 
-triggered and which modules will apply for that, because if not the major changes needed 
-in the modules would be very risky and will take more time for testing.
-\item Verilog was not specially designed to upload files that why for our tests purposes we need to
-modify the code to point a specific file. 
+\item A team of 2 undergraduates designed and implemented and tested a 32-bits MIPS processor. The implementation was completed as part of an academic semester-long Computer Architecture course.
+\item This implementation of single-cycle datapath is a close replica of the original in the early days of RISC architecture. Nowadays this approach show limitations of performance due to the execution of 1 instruction per cycle and this implementation is not considering pipeline technique to improve the performance.
+\item The implementation successfully passed all tests bench including a factorial program which used many components of the architecture.
 \end{itemize}
 %COMMENTS SECTION
 \section{Comments}
