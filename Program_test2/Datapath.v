@@ -16,7 +16,7 @@ module datapath(clk,result,pc,opcode);
     reg [25:0] j_initial,j_offset;
     reg overflow,alu_exit;
 
-    reg [7:0] instr_memory [0:27];
+    reg [7:0] instr_memory [0:255];
     reg [31:0] reg_file [0:31];
     reg [7:0] data_memory [0:255];
 
