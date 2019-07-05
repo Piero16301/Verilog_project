@@ -162,57 +162,83 @@ In total the implementation is composed of the following 5 files:
 \end{center}
 \end{table}
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.7]{modelsim_module.png}}
-\caption{Register File module in ModelSim.}
-\label{fig}
-\end{figure}
-
 \section{Experimental Setup} %III Experimental Setup
-To test our datapath we first test each component separetly to isolate the
-problems, once all the components pass its respective tests we continue with a complete 
-test of our datapath, in order to do that we agroup the previous instructions
-in 3 files to be loaded in the instruction memory.
-
-Each test bench file contains the instructions and its respective
-operands (registers). Previously for purpose testing we load the 
-register file with random values.
-
+The implementation of the datapath has the following setup
+\subsection{Instructions and opcodes}
+The opcodes used in the implementation are shown in the Table IV
 \begin{table}[htbp]
-\caption{Registers} %Testbench 1
-\begin{center}
-\begin{tabular}{|c|c|c|}
-%\cline{2-4} 
-\hline
-Register&Number in decimal&Number in hexadecimal\\
-number&notation&notation\\
-\hline
-16&49527&0000C177\\
-\hline
-17&63767&0000F917\\
-\hline
-18&31778&00007C22\\
-\hline
-19&23198&00005A9E\\
-\hline
-20&917&00000395\\
-\hline
-21&24182&00005E76\\
-\hline
-22&52687&0000CDCF\\
-\hline
-23&20726&000050F6\\
-\hline
-29&150&00000096\\
-\hline
-\multicolumn{3}{l}{The others registers, 1 to 15, 24 to 28 and 30,31 remain with zero.}
-\end{tabular}
-\label{tab_regfile}
+	\caption{Opcode MIPS} %Testbench 1
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			%\cline{2-4} 
+			\hline
+			N&TYPE&OPCODE&OPERATION\\
+			\hline
+			1&ADD&000000&add \$s0,\$t0,\$t1\\
+			\hline
+			2&SUB&000001&add \$s1,\$t2,\$t3\\
+			\hline
+			3&AND&000010&and \$s2,\$t4,\$t5\\
+			\hline
+			4&NOR&000011&nor \$s3,\$t6,\$t7\\
+			\hline
+			5&OR&000100&or \$s4,\$t8,\$t9\\
+			\hline
+			6&SLT&000101&slt \$s5,\$t0,\$t1\\
+			\hline
+			7&ADDI&000110&addi \$s6,\$t2,45\\
+			\hline
+			8&SUBI&000111&subi \$s7,\$t3,37\\
+			\hline
+			9&ANDI&001000&andi \$s0,\$t4,66\\
+			\hline
+			10&ORI&001001&ori \$s1,\$t5,89\\
+			\hline
+			11&SLTI&001010&slti \$s2,\$t6,65535\\
+			\hline
+			12&LB&001011&lb \$s3,33,(\$zero)\\
+			\hline
+			13&LH&001100&lh \$s4,65(\$zero)\\
+			\hline
+			14&LW&001101&lw \$s5,48(\$zero)\\
+			\hline
+			15&LUI&001110&lui \$s6,346\\
+			\hline
+			16&MUL&001111&mul \$s2,\$s0,\$s1\\
+			\hline
+			17&SB&010000&sb \$s7,24(\$zero)\\
+			\hline
+			18&SH&010001&sh \$s0,73,(\$zero)\\
+			\hline
+			19&SW&010010&sw \$s1,91,(\$zero)\\
+			\hline
+			20&BEQ&010011&beq \$t0,\$t1,1\\
+			\hline
+			21&BNEQ&010100&bneq \$t2,\$t3,1\\
+			\hline
+			22&BGEZ&010101&bgez \$t4,10\\
+			\hline
+			23&J&010110&j 12\\
+			\hline
+			24&JAL&010111&jal 15\\
+			\hline
+			25&JR&011000&jr \$ra\\
+			\hline
+		\end{tabular}
+	\label{tab_opcode}
 \end{center}
 \end{table}
 
-In each test bench are using 10 nanoseconds as a positive clock signal and negative
-clock signal which give us 20 nanoseconds in total per clock cycle.
+\subsection{Register File}
+32 registers, each one of 32 bits.
+\subsection{Instruction memory}
+Size: 256 bytes
+\subsection{Data memory}
+Size: 256 bytes\\
+\subsection{Data memory}
+Size: 256 bytes\\
+\subsection{Testbench}
+Each test bench is using 5 nanoseconds as a positive clock signal and negative clock signal which give us 10 nanoseconds in total per clock cycle.
 
 \begin{table}[htbp]
 \caption{Testbench 1} %Testbench 1
