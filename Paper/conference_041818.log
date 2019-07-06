@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.10)  5 JUL 2019 21:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.10)  5 JUL 2019 22:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -593,17 +593,17 @@ LaTeX Info: Redefining \nameref on input line 14.
 \@outlinefile=\write3
 \openout3 = `conference_041818.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 59.
+LaTeX Font Info:    Try loading font information for U+msa on input line 60.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 59.
+LaTeX Font Info:    Try loading font information for U+msb on input line 60.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (4.57455pt too wide) in paragraph at lines 81--103
+Overfull \hbox (4.57455pt too wide) in paragraph at lines 82--104
  [] 
  []
 
@@ -611,49 +611,49 @@ Overfull \hbox (4.57455pt too wide) in paragraph at lines 81--103
 
 
 ]
-<MIPS_Datapath.png, id=79, 929.3922pt x 517.935pt>
+<MIPS_Datapath.png, id=81, 929.3922pt x 517.935pt>
 File: MIPS_Datapath.png Graphic file (type png)
 <use MIPS_Datapath.png>
-Package pdftex.def Info: MIPS_Datapath.png  used on input line 141.
+Package pdftex.def Info: MIPS_Datapath.png  used on input line 142.
 (pdftex.def)             Requested size: 278.81981pt x 155.38168pt.
 
-Overfull \hbox (26.81981pt too wide) in paragraph at lines 141--142
+Overfull \hbox (26.81981pt too wide) in paragraph at lines 142--143
 [][] 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 151.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 152.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 179.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 180.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 241--242
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
 
  []
 
 [2 <./MIPS_Datapath.png>]
-<factorial_c.png, id=90, 216.81pt x 129.48375pt>
+<factorial_c.png, id=92, 216.81pt x 129.48375pt>
 File: factorial_c.png Graphic file (type png)
 <use factorial_c.png>
-Package pdftex.def Info: factorial_c.png  used on input line 316.
+Package pdftex.def Info: factorial_c.png  used on input line 317.
 (pdftex.def)             Requested size: 173.44823pt x 103.58711pt.
-<MIPS_Factorial.png, id=91, 838.8138pt x 504.4446pt>
+<MIPS_Factorial.png, id=93, 838.8138pt x 504.4446pt>
 File: MIPS_Factorial.png Graphic file (type png)
 <use MIPS_Factorial.png>
-Package pdftex.def Info: MIPS_Factorial.png  used on input line 325.
+Package pdftex.def Info: MIPS_Factorial.png  used on input line 326.
 (pdftex.def)             Requested size: 377.46272pt x 226.99797pt.
 
-Overfull \hbox (125.46272pt too wide) in paragraph at lines 325--326
+Overfull \hbox (125.46272pt too wide) in paragraph at lines 326--327
  [] 
  []
 
@@ -661,69 +661,46 @@ Overfull \hbox (125.46272pt too wide) in paragraph at lines 325--326
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (32.41423pt too wide) in paragraph at lines 344--360
+Overfull \hbox (32.41423pt too wide) in paragraph at lines 345--361
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<test_bench_1.png, id=93, 746.79pt x 335.2525pt>
+<test_bench_1.png, id=95, 746.79pt x 335.2525pt>
 File: test_bench_1.png Graphic file (type png)
 <use test_bench_1.png>
-Package pdftex.def Info: test_bench_1.png  used on input line 364.
+Package pdftex.def Info: test_bench_1.png  used on input line 365.
 (pdftex.def)             Requested size: 246.44145pt x 110.63367pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<test_bench_2.png, id=94, 451.6875pt x 224.84pt>
+<test_bench_2.png, id=96, 451.6875pt x 224.84pt>
 File: test_bench_2.png Graphic file (type png)
 <use test_bench_2.png>
-Package pdftex.def Info: test_bench_2.png  used on input line 370.
+Package pdftex.def Info: test_bench_2.png  used on input line 371.
 (pdftex.def)             Requested size: 248.42888pt x 123.66237pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<test_bench_3.png, id=95, 465.74pt x 445.665pt>
+<test_bench_3.png, id=97, 465.74pt x 445.665pt>
 File: test_bench_3.png Graphic file (type png)
 <use test_bench_3.png>
-Package pdftex.def Info: test_bench_3.png  used on input line 376.
+Package pdftex.def Info: test_bench_3.png  used on input line 377.
 (pdftex.def)             Requested size: 232.86943pt x 222.83195pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<test_bench_4_factorial.png, id=96, 455.7025pt x 281.05pt>
+<test_bench_4_factorial.png, id=98, 455.7025pt x 281.05pt>
 File: test_bench_4_factorial.png Graphic file (type png)
 <use test_bench_4_factorial.png>
-Package pdftex.def Info: test_bench_4_factorial.png  used on input line 382.
+Package pdftex.def Info: test_bench_4_factorial.png  used on input line 383.
 (pdftex.def)             Requested size: 227.85068pt x 140.52464pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [3 <./factorial_c.png> <./MIPS_Factorial.png>]
-Underfull \hbox (badness 2932) in paragraph at lines 410--411
-\OT1/ptm/m/n/8 II-A: The MIPS32\TS1/ptm/m/n/8 ® \OT1/ptm/m/n/8 In-struc-tion Se
-t Man-ual. [on-line] Avail-able
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 410--411
-\OT1/ptm/m/n/8 at: []$https : / / s3-[]eu-[]west-[]1 . amazonaws . com / downlo
-ads-[]mips / documents /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 412--413
-[]\OT1/ptm/m/n/8 Mentor.com. (2018). Mod-el-Sim PE Stu-dent Edi-tion. [on-line]
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 412--413
-\OT1/ptm/m/n/8 Avail-able at: []$https : / / www . mentor . com / company / hig
-her[]ed /
- []
-
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -735,29 +712,29 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 418.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 412.
 [4 <./test_bench_1.png> <./test_bench_2.png> <./test_bench_3.png> <./test_bench
 _4_factorial.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 418.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 412.
  (./conference_041818.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 418.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 418.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 412.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 412.
 Package rerunfilecheck Info: File `conference_041818.out' has not changed.
 (rerunfilecheck)             Checksum: 709E17A6D9A2F6CFAF9673A6A235C292;824.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 418.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 412.
  ) 
 Here is how much of TeX's memory you used:
- 8028 strings out of 492623
- 118984 string characters out of 6129552
- 223617 words of memory out of 5000000
- 11797 multiletter control sequences out of 15000+600000
- 42488 words of font info for 91 fonts, out of 8000000 for 9000
+ 8021 strings out of 492623
+ 118913 string characters out of 6129552
+ 224569 words of memory out of 5000000
+ 11792 multiletter control sequences out of 15000+600000
+ 41981 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,9n,35p,401b,399s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,9n,35p,401b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
@@ -768,10 +745,10 @@ xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on conference_041818.pdf (4 pages, 353274 bytes).
+Output written on conference_041818.pdf (4 pages, 353089 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 145 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
+ 170 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
  156 words of extra memory for PDF output out of 10000 (max. 10000000)
 

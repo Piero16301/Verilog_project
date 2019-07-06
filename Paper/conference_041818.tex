@@ -46,6 +46,7 @@ from mobile devices to supercomputers. From the beginning	of computer era scient
 processor performance not only increasing the number of transistors, but also by improving the instructions
 that the processor executes. A major change that happened for CPUs is the paradigm from a single core to multi core that increased signifcantly its performance. In this way, Moore's law, that until this moment had traced the future of processors,
 is discarded.
+MIPS was originally invented as part of a Standford research project \cite{b1} and this was the beginig of the new era for CPUs. Due this fact we focus this project to study and understand the detail of this important architecture.
 \section{Methodology}	%II. Methodology
 
 For this project we use a Hardware Description Language (HDL) to design and simulate our
@@ -331,7 +332,7 @@ The factorial program on MIPS is shown in figure 3.
 %EVALUATION SECTION
 \section{Evaluation}
 
-According to the proposed set of test bench, We calculate the CPU time \cite{b5} (time processing) for each test bench considering the following equation:
+According to the proposed set of test bench, We calculate the CPU time \cite{b3} (time processing) for each test bench considering the following equation:
 \[Time = PI * CPI * Clock Cycle Time\] 
 
 Time means execution time measured in seconds per program. PI is Program Instructions (instructions executed for the program), CPI is Clock Cycles per instruction and Clock Cycle time measured in seconds per clock cycle.
@@ -396,22 +397,15 @@ The results and outputs of Fig. 4, Fig. 5, Fig6, and Fig. 7. are consistent with
 %COMMENTS SECTION
 \section{Comments}
 \begin{itemize}
-\item The verilog compiler doesn't warn you when a module  instantiation does not exists until you simulate it
-\item One common problem is asume the execution of the code in the components of the datapth will be sequential, 
-that is not correct since we have the always @ block and that could be executed in the upper sign of the clock 
-or the lower sign.
-\item For those who are used to the conditional statements of the programming languages it is a little difficult at the 
-beginning use verilog, because at the digital circuit level there we only have and, or, xor and all the gates.
-\item To find the errors in the testing fase we can navigate in the windows objects in ModelSim throught the modules
-to find the issue.
+\item One of the most challenging actitivities of this project was translate a factorial program from C to machine language, because it required test our whole implementation. This included grasp the real work done behind the scenes for some MIPS instructions like jr or jal.
+\item To find and fix bugs we had to have clear outputs (monitor statement) in our test bench and also have a clear understanding of the value (actual data) of the registers.
+\item The choice of using icarus verilog was natural to us since we prefered the flexibility of a console environment in a Linux system.
 \end{itemize}
 
 \begin{thebibliography}{00}
-\bibitem{b1} MIPS.com. (2016). MIPS® Architecture for Programmers Volume II-A: The MIPS32® Instruction Set Manual. [online] Available at: \url{https://s3-eu-west-1.amazonaws.com/downloads-mips/documents/MD00086-2B-MIPS32BIS-AFP-6.06.pdf} [Accessed 27 Nov. 2018].
+\bibitem{b1} M. Horowitz, et. al., "MIPS-X: 20-MIPS peak, 32 bits microprocessor," IEEEJournal of Solid-State Circuits, vol. 22, no. 5, pp. 790-799, Oct. 1987.
 \bibitem{b2} IEEE Standard for Verilog Hardware Description Language. IEEE Standard 1364-2005 (Revision of IEEE Standard 1364-2001). \url{http://dx.doi.org/10.1109/IEEESTD.2006.99495}, 2006. Last access 26 November 2018.
-\bibitem{b3} Mentor.com. (2018). ModelSim PE Student Edition. [online] Available at: \url{https://www.mentor.com/company/higher_ed/modelsim-student-edition} [Accessed 27 Nov. 2018].
-\bibitem{b4} Ashenden, P. (2008). Digital Design: An Embedded Systems Approach Using Verilog. Burlington, MA: Elsevier Science, pp.22,23.
-\bibitem{b5} Patterson, D., Hennessy, J. and Alexander, P. (2012). Computer organization and design. 4th ed. Waltham, Mass: Morgan Kaufmann, pp.35.
+\bibitem{b3} Patterson, D., Hennessy, J. and Alexander, P. (2012). Computer organization and design. 4th ed. Waltham, Mass: Morgan Kaufmann, pp.35.
 \end{thebibliography}
 \vspace{12pt}
 
