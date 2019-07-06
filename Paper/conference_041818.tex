@@ -334,9 +334,9 @@ The factorial program on MIPS is shown in figure 3.
 According to the proposed set of test bench, We calculate the CPU time \cite{b5} (time processing) for each test bench considering the following equation:
 \[Time = PI * CPI * Clock Cycle Time\] 
 
-Where time means execution time measured in seconds per program. PI is Program Instructions (instructions executed for the program), CPI is Clock Cycles per instruction and Clock Cycle time measured in seconds per clock cycle.
+Time means execution time measured in seconds per program. PI is Program Instructions (instructions executed for the program), CPI is Clock Cycles per instruction and Clock Cycle time measured in seconds per clock cycle.
 
-We executed the test bench 1, 2, 3 and 4, these were the results:
+We executed the test bench 1, 2, 3 and 4, the results regarding to CPU time is show in table VIII
 
 \begin{table}[h]
 	\caption{CPU Time} %Clock cycles
@@ -351,7 +351,7 @@ We executed the test bench 1, 2, 3 and 4, these were the results:
 			\hline
 			Test bench 2&7&7&7&10&70\\
 			\hline
-			Test bench 3&22&17&17&10&170\\
+			Test bench 3&20&100&100&10&1000\\
 			\hline
 			Test bench 4&18&131&131&10&1310\\
 			\hline
@@ -361,39 +361,30 @@ We executed the test bench 1, 2, 3 and 4, these were the results:
 \end{table}
 
 \begin{figure}[h]
-\includegraphics[scale=0.41]{ModelSim_testbench1_clock_cycles.png}
+\includegraphics[scale=0.33]{test_bench_1.png}
 \caption{Execution results for test bench 1.}
 \label{result1}
 \end{figure}
 
 \begin{figure}[h]
-\includegraphics[scale=0.5]{ModelSim_factorial4_clock_cycles.png}
-\caption{Execution results of the test bench for the factorial.}
-\label{result_factorial}
-\end{figure}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.7]{factorial_10.png}
-\caption{Wolfram Alpha - Factorial of 10. \cite{b6}}
-\label{result_factorial}
-\end{center}
-\end{figure}
-
-\begin{figure}[h]
-\includegraphics[scale=0.5]{ModelSim_testbench2_clock_cycles.png}
+\includegraphics[scale=0.55]{test_bench_2.png}
 \caption{Execution results for test bench 2.}
+\label{result_factorial}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.5]{test_bench_3.png}
+\caption{Execution results for test bench 3.}
 \label{result2}
 \end{figure}
 
 \begin{figure}[h]
-\includegraphics[scale=0.5]{ModelSim_testbench3_clock_cycles.png}
-\caption{Execution results for test bench 3.}
+\includegraphics[scale=0.5]{test_bench_4_factorial.png}
+\caption{Execution results for test bench 4 (Factorial of 10).}
 \label{result3}
 \end{figure}
 
-Comparing the results of Fig. 5., Fig. 8. and Fig. 9. with the Table VIII we get the same amount
-of clock cycles and the time for each file, also the results of the instructions are as we expected.
+The results and outputs of Fig. 4, Fig. 5, Fig6, and Fig. 7. are consistent with the results shown in Table VIII, we obtain the expected amount of clock cycles and the time for each test.
  
 %CONCLUSION SECTION
 \section{Conclusion}
@@ -405,10 +396,6 @@ of clock cycles and the time for each file, also the results of the instructions
 %COMMENTS SECTION
 \section{Comments}
 \begin{itemize}
-\item When we are simulating our component in ModelSim no warnings must appear when the 
-simulation starts, otherwise there was some error or unexpected behaviour. One common 
-issue is referring a wire or register as an input or output of a module with diferent length.
-\item In ModelSim is the identifier is not declare verilog assume is a wire.
 \item The verilog compiler doesn't warn you when a module  instantiation does not exists until you simulate it
 \item One common problem is asume the execution of the code in the components of the datapth will be sequential, 
 that is not correct since we have the always @ block and that could be executed in the upper sign of the clock 
@@ -425,7 +412,6 @@ to find the issue.
 \bibitem{b3} Mentor.com. (2018). ModelSim PE Student Edition. [online] Available at: \url{https://www.mentor.com/company/higher_ed/modelsim-student-edition} [Accessed 27 Nov. 2018].
 \bibitem{b4} Ashenden, P. (2008). Digital Design: An Embedded Systems Approach Using Verilog. Burlington, MA: Elsevier Science, pp.22,23.
 \bibitem{b5} Patterson, D., Hennessy, J. and Alexander, P. (2012). Computer organization and design. 4th ed. Waltham, Mass: Morgan Kaufmann, pp.35.
-\bibitem{b6} Wolframalpha.com (2018). Wolfram|Alpha: Making the world’s knowledge computable. [online] Wolframalpha.com. \url{Available at: https://www.wolframalpha.com/input/?i=factorial+10} [Accessed 28 Nov. 2018].
 \end{thebibliography}
 \vspace{12pt}
 
