@@ -16,7 +16,7 @@ We enter in this directory and Here we compile these both files and we test bran
 #> iverilog Datapath.v Test_datapath.v
 #> ./a.out
 
-Directory: Program_test4
+Directory: Test_Factorial
 We enter in this directory and Here we compile these both files and we test the overall datapath executing a factorial program (factorial of 10 = 3628800)
 #> iverilog Datapath.v Test_datapath.v
 #> ./a.out
