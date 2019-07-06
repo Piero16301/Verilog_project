@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{placeins}
 \usepackage{hyperref}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -155,9 +156,9 @@ In total the implementation is composed of the following 5 files:
 \begin{tabular}{c c}
 \verb$Datapath.v$&\verb$(implementation)$\\
 \verb$Test_datapath.v$&\verb$(testing module)$\\
-\verb$instruction.txt$&\verb$(for R-type)$\\
-\verb$instruction.txt$&\verb$(for I-type)$\\
-\verb$instruction.txt$&\verb$(for J-type)$\\
+\verb$instruction.txt$&\verb$(for arithmetic operations)$\\
+\verb$instruction.txt$&\verb$(for load and store operations)$\\
+\verb$instruction.txt$&\verb$(for branch and jump operations)$\\
 \verb$instruction.txt$&\verb$(test a factorial program)$\\
 \end{tabular}
 \end{center}
@@ -239,70 +240,77 @@ Size: 256 bytes\\
 \subsection{Data memory}
 Size: 256 bytes\\
 \subsection{Testbench}
-Each test bench is using 5 nanoseconds as a positive clock signal and negative clock signal which give us 10 nanoseconds in total per clock cycle. The implementation has three different test bench for each type of instruction and one final test bench to validate a factorial program.
-\begin{table}[htbp]
-\caption{Testbench 1} %Testbench 1
-\begin{tabular}{|c|c|c|}
-\hline
-\multicolumn{3}{|c|}{\textbf{Instructions}} \\
-%\cline{2-4} 
-\hline
-ADD&Subtraction (SUB)&AND  \\
-\hline
-NOR&OR&Set Less Than (SLT) \\
-\hline
-Add Immediate&Subtraction Inmediate & AND Inmediate \\
-(ADDI) &(SUBI) & (ANDI) \\
-\hline
-OR Immediate&Set Less Than Immediate&  \\
-(ORI)&(SLTI)& --- \\
-\hline
-\end{tabular}
-\label{tab_test1}
-\end{table}
+Each test bench is using 5 nanoseconds as a positive clock signal and negative clock signal which give us 10 nanoseconds in total per clock cycle. The implementation has three different test bench for each operation type (arithmetic, load and store, branch and jump) and one final test bench to validate a factorial program.
 
+\FloatBarrier
+\begin{table}[htbp]
+	\caption{Testbench 1} %Testbench 1
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\multicolumn{3}{|c|}{\textbf{Instructions}} \\
+		%\cline{2-4} 
+		\hline
+		ADD&Subtraction (SUB)&AND  \\
+		\hline
+		NOR&OR&Set Less Than (SLT) \\
+		\hline
+		Add Immediate&Subtraction Inmediate & AND Inmediate \\
+		(ADDI) &(SUBI) & (ANDI) \\
+		\hline
+		OR Immediate&Set Less Than Immediate&  \\
+		(ORI)&(SLTI)& --- \\
+		\hline
+	\end{tabular}
+	\label{tab_test1}
+\end{table}
+\FloatBarrier
+
+\FloatBarrier
 \begin{table}[t]
-\caption{Testbench 2} %Testbench 2
-\begin{center}
-\begin{tabular}{|c|c|c|}
-\hline
-\multicolumn{3}{|c|}{\textbf{Instructions}} \\
-%\cline{2-4} 
-\hline
-Store Byte&Store Halfword&Store Word\\
-(SB)&(SH)&(SW)  \\
-\hline
-Load Byte&Load Halfword&Load Word\\
-(LB)&(LH)&(LW) \\
-\hline
-Load Upper Inmediate&&\\
-(LUI)&& \\
-\hline
-\end{tabular}
-\label{tab_test2}
-\end{center}
+	\caption{Testbench 2} %Testbench 2
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{\textbf{Instructions}} \\
+			%\cline{2-4} 
+			\hline
+			Store Byte&Store Halfword&Store Word\\
+			(SB)&(SH)&(SW)  \\
+			\hline
+			Load Byte&Load Halfword&Load Word\\
+			(LB)&(LH)&(LW) \\
+			\hline
+			Load Upper Inmediate&&\\
+			(LUI)&& \\
+			\hline
+		\end{tabular}
+		\label{tab_test2}
+	\end{center}
 \end{table}
+\FloatBarrier
 
+\FloatBarrier
 \begin{table}[htbp]
-\caption{Testbench 3} %Testbench 3
-\begin{center}
-\begin{tabular}{|c|c|c|}
-\hline
-\multicolumn{3}{|c|}{\textbf{Instructions}} \\
-%\cline{2-4} 
-\hline
-Branch On Equal&Branch On Not Equal&Branch On Greater \\
-(BEQ)&(BNEQ)&than equal zero (BGEZ)  \\
-\hline
-Jump&Jump and Link&Jump Register\\
-(J)&(JAL)&(JR) \\
-\hline
-\end{tabular}
-\label{tab_test3}
-\end{center}
+	\caption{Testbench 3} %Testbench 3
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{\textbf{Instructions}} \\
+			%\cline{2-4} 
+			\hline
+			Branch On Equal&Branch On Not Equal&Branch On Greater \\
+			(BEQ)&(BNEQ)&than equal zero (BGEZ)  \\
+			\hline
+			Jump&Jump and Link&Jump Register\\
+			(J)&(JAL)&(JR) \\
+			\hline
+		\end{tabular}
+		\label{tab_test3}
+	\end{center}
 \end{table}
+\FloatBarrier
 
-To get a more a realistic test of the processor implemented, It will execute a C program that do a factorial operation (figure 2).
+To get a more a realistic test of the processor implemented, It will execute a C program that do a factorial operation (figure 2). The factorial program will use a variety of  intructions implemented including recursivity technique, it will be the test bench 4.
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.8]{factorial_c.png}
@@ -320,58 +328,43 @@ The factorial program on MIPS is shown in figure 3.
 \end{center}
 \end{figure}
  
-The factorial program will use a variety of  intructions implemented including recursivity technique, it will be the test bench 4.
-
-To calculate the CPU time \cite{b5} (time processing) for each test bench we use the following formula:
-\[Time = PI * CPI * Time per Clock Cycle\] 
-
-where PI is Program Instructions and CPI is Clock Cycles per instruction. 
-
-\begin{table}[h]
-\caption{Clock cycles} %Clock cycles
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-&Total&Total executed&Clock&CPU Time\\
-&instructions&instructions&Cycles&(Nanoseconds)\\
-&&(Expected)&&\\
-\hline
-Test bench 1&11&11&11&220\\
-\hline
-Test bench 2&7&7&7&140\\
-\hline
-Test bench 3&22&17&17&340\\
-\hline
-Test bench 4&18&131&131&2620\\
-\hline
-\end{tabular}
-\label{tab_test3}
-\end{center}
-\end{table}
-
 %EVALUATION SECTION
 \section{Evaluation}
+
+According to the proposed set of test bench, We calculate the CPU time \cite{b5} (time processing) for each test bench considering the following equation:
+\[Time = PI * CPI * Clock Cycle Time\] 
+
+Where time means execution time measured in seconds per program. PI is Program Instructions (instructions executed for the program), CPI is Clock Cycles per instruction and Clock Cycle time measured in seconds per clock cycle.
+
 We executed the test bench 1, 2, 3 and 4, these were the results:
+
+\begin{table}[h]
+	\caption{CPU Time} %Clock cycles
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			&Total&Total of executed&Clock&Clock&CPU\\
+			&instructions&instructions&Cycles&Cycle Time&Time\\
+			&&(Expected)&&(ns)&(ns)\\
+			\hline
+			Test bench 1&11&11&11&10&110\\
+			\hline
+			Test bench 2&7&7&7&10&70\\
+			\hline
+			Test bench 3&22&17&17&10&170\\
+			\hline
+			Test bench 4&18&131&131&10&1310\\
+			\hline
+		\end{tabular}
+		\label{tab_test3}
+	\end{center}
+\end{table}
 
 \begin{figure}[h]
 \includegraphics[scale=0.41]{ModelSim_testbench1_clock_cycles.png}
 \caption{Execution results for test bench 1.}
 \label{result1}
 \end{figure}
-
-We ran the test bench in intervals of 100 nanoseconds as we can see in Fig. 5. \label{result1}. For the 
-test bench 1 we get 100 nanoseconds + 100 nanoseconds + 20 nanoseconds with in total 
-give us 220 nanoseconds.
-
-We apply the same procedure to the test bench 2  \label{result3}, Fig. 8. and the result was
-100 nanoseconds + 40 nanoseconds = 140 nanoseconds.
-
-In test bench 3, Fig. 9., we got 100 nanoseconds + 100 nanoseconds + 100 nanoseconds 
-+ 40 nanoseconds with th total of 340 nanoseconds.
-
-And finally for the test bench 4, Fig. 6, we use intervals of 500 nanoseconds since the execution
-is elevated, we get 2610 nanoseconds in total also the output of the factorial of 10 was 
-0x003750f00 which in decimal notation correspond to 3628800.
 
 \begin{figure}[h]
 \includegraphics[scale=0.5]{ModelSim_factorial4_clock_cycles.png}
