@@ -1,0 +1,410 @@
+% LaTex for Computer Architecture final project
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{placeins}
+\usepackage{hyperref}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Single Cycle Datapath Processor using MIPS\\
+}
+
+\author{\IEEEauthorblockN{Piero Morales}
+\IEEEauthorblockA{\textit{Computer Science University Student} \\
+\textit{University of Engineering and Technology}\\
+Lima, Peru \\
+piero.morales@utec.edu.pe}
+\and
+\IEEEauthorblockN{Angel Motta}
+\IEEEauthorblockA{\textit{Computer Science University Student} \\
+	\textit{University of Engineering and Technology}\\
+	Lima, Peru \\
+	angel.motta@utec.edu.pe}
+}
+
+\maketitle
+
+\begin{abstract}
+Two undergraduates implemented a 32 bits pathline based on RISC MIPS for a computer architecture course. This datapath support instructions R-type, I-type and J-type. This included designing the architecture in Verilog, developing test bench modules for the implementation.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Computer architecture, risc, verilog, processor, big endgian, microprocessor without interlocked pipeline stages
+\end{IEEEkeywords}
+
+\section{Introduction}	%I. Introduction
+The form, design, and implementation of CPUs have changed over the course of their history, but their
+fundamental operation remains almost unchanged. The CPU has become the nerve center of any computer,
+from mobile devices to supercomputers. From the beginning	of computer era scientists have tried to improve
+processor performance not only increasing the number of transistors, but also by improving the instructions
+that the processor executes. A major change that happened for CPUs is the paradigm from a single core to multi core that increased signifcantly its performance. In this way, Moore's law, that until this moment had traced the future of processors,
+is discarded.
+MIPS was originally invented as part of a Standford research project \cite{b1} and this was the beginig of the new era for CPUs. Due this fact we focus this project to study and understand the detail of this important architecture.
+\section{Methodology}	%II. Methodology
+
+For this project we use a Hardware Description Language (HDL) to design and simulate our
+processor and all its components related. The datapath was coded in Verilog. We choose Verilog \cite{b2} as HDL because is widely used in the industry and it was simulated and tested using test bench modules.
+
+The goal of this project is achieve a better understanding of MIPS single-cycle and implement it with focussing in the basic operations with integers, covering R-type, I-type and J-type instructions for 32 bits MIPS ISA:
+
+\begin{table}[htbp]
+\caption{R Type} %R Type
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Instructions}} \\
+%\cline{2-4} 
+\hline
+ADD&Subtraction&AND  \\
+&(SUB)&\\
+\hline
+NOR&OR&Set Less Than\\
+&&(SLT)\\
+\hline
+Jump Register&& \\
+(JR)&&\\
+\hline
+\end{tabular}
+\label{tab_rtype}
+\end{center}
+\end{table}
+
+\begin{table}[htbp]
+\caption{I Type} %I Type
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Instructions}} \\
+%\cline{2-4} 
+\hline
+Add Immediate&Subtraction Inmediate & AND Inmediate \\
+(ADDI) &(SUBI) & (ANDI) \\
+\hline
+OR Immediate&Set Less Than Immediate&  Store Byte \\
+(ORI)&(SLTI)&(SB) \\
+\hline
+Store Halfword&Store Word&Load Byte \\
+(SH)&(SW)&(LB)\\
+\hline
+Load Halfword&Load Word&Load Upper\\
+(LH)&(LW)&Immediate (LUI)\\
+\hline
+Branch On Equal&Branch On Not Equal&Branch On Greater \\
+(BEQ)&(BNEQ)&than equal zero (BGEZ)  \\
+\hline
+\end{tabular}
+\label{tab_itype}
+\end{center}
+\end{table}
+
+\begin{table}[htbp]
+\caption{J Type} %J Type
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Instructions}} \\
+%\cline{2-4} 
+\hline
+Jump&Jump and Link&\\
+(J) &(JAL)&----\\
+\hline
+\end{tabular}
+\label{tab_itype}
+\end{center}
+\end{table}
+\subsection{Datapath}
+To achieve the goal of supporting all instructions listed before we need to implement the following components:
+
+\begin{itemize}
+\item Aritmetic Logic Unit (ALU), one of the core componentes of the processor who make the operations of addition, subtraction, comparation between two numbers, logic AND, logic OR, logic NOR.
+\item Instruction Memory, stores all the instructions to be read and executed according to the address selected.
+\item PC Counter, a register to hold the address of the current instruction being executed.
+\item Register File, space that stores 32 registers for MIPS ISA, each one of 32 bits.
+\item Data Memory, stores the data to support load and stores instructions.
+\item Multiplexor 2 to 1, determine which of the 2 inputs input select, based on a selector signal i.e. in the selection between the PC Counter, the branch or the jump.
+\item Adder, execute PC + 4 to link the following instruction, also is used for the offset to cover the branch instruction.
+\item Shift Left 2 and 16, to be used to calculate the offset for the branch and load a number 
+up to 32 bits respectively.
+\item Sign extend, used to extend the most significant bit of the number.
+\item and the control component for support all the instructions deciding which signal activate 
+depending on the type of instruction and the operation.
+\end{itemize}
+
+The structure of the datapath including all the components:
+\begin{figure}[h]
+\includegraphics[scale=0.27]{MIPS_Datapath.png}
+\caption{Datapath.}
+\end{figure}
+%\begin{figure*}[htbp]
+%\centerline{\includegraphics[scale=0.25]{datapath.png}}
+%\caption{Datapath.}
+%\label{fig_data}
+%\end{figure*}
+
+\subsection{Verilog}
+The implementation in Verilog is in a single file called \verb$Datapath.v$ where is coded the instruction set architecture. Three differents files called \verb$instruction.txt$ are used to test and validate the correct functionality of the implementation along with a file called \verb$Test_datapath.v$
+In total the implementation is composed of the following 5 files:
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{c c}
+\verb$Datapath.v$&\verb$(implementation)$\\
+\verb$Test_datapath.v$&\verb$(testing module)$\\
+\verb$instruction.txt$&\verb$(for arithmetic operations)$\\
+\verb$instruction.txt$&\verb$(for load and store operations)$\\
+\verb$instruction.txt$&\verb$(for branch and jump operations)$\\
+\verb$instruction.txt$&\verb$(test a factorial program)$\\
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Experimental Setup} %III Experimental Setup
+The implementation of the datapath has the following setup
+\subsection{Instructions and opcodes}
+The opcodes used in the implementation are shown in the Table IV
+\begin{table}[htbp]
+	\caption{Opcode MIPS} %Testbench 1
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			%\cline{2-4} 
+			\hline
+			N&TYPE&OPCODE&OPERATION\\
+			\hline
+			1&ADD&000000&add \$s0,\$t0,\$t1\\
+			\hline
+			2&SUB&000001&add \$s1,\$t2,\$t3\\
+			\hline
+			3&AND&000010&and \$s2,\$t4,\$t5\\
+			\hline
+			4&NOR&000011&nor \$s3,\$t6,\$t7\\
+			\hline
+			5&OR&000100&or \$s4,\$t8,\$t9\\
+			\hline
+			6&SLT&000101&slt \$s5,\$t0,\$t1\\
+			\hline
+			7&ADDI&000110&addi \$s6,\$t2,45\\
+			\hline
+			8&SUBI&000111&subi \$s7,\$t3,37\\
+			\hline
+			9&ANDI&001000&andi \$s0,\$t4,66\\
+			\hline
+			10&ORI&001001&ori \$s1,\$t5,89\\
+			\hline
+			11&SLTI&001010&slti \$s2,\$t6,65535\\
+			\hline
+			12&LB&001011&lb \$s3,33,(\$zero)\\
+			\hline
+			13&LH&001100&lh \$s4,65(\$zero)\\
+			\hline
+			14&LW&001101&lw \$s5,48(\$zero)\\
+			\hline
+			15&LUI&001110&lui \$s6,346\\
+			\hline
+			16&MUL&001111&mul \$s2,\$s0,\$s1\\
+			\hline
+			17&SB&010000&sb \$s7,24(\$zero)\\
+			\hline
+			18&SH&010001&sh \$s0,73,(\$zero)\\
+			\hline
+			19&SW&010010&sw \$s1,91,(\$zero)\\
+			\hline
+			20&BEQ&010011&beq \$t0,\$t1,1\\
+			\hline
+			21&BNEQ&010100&bneq \$t2,\$t3,1\\
+			\hline
+			22&BGEZ&010101&bgez \$t4,10\\
+			\hline
+			23&J&010110&j 12\\
+			\hline
+			24&JAL&010111&jal 15\\
+			\hline
+			25&JR&011000&jr \$ra\\
+			\hline
+		\end{tabular}
+	\label{tab_opcode}
+\end{center}
+\end{table}
+
+\subsection{Register File}
+32 registers, each one of 32 bits.
+\subsection{Instruction memory}
+Size: 256 bytes.
+\subsection{Data memory}
+Size: 256 bytes.
+\subsection{Testbench}
+Each test bench is using 5 nanoseconds as a positive clock signal and negative clock signal which give us 10 nanoseconds in total per clock cycle. The implementation has three different test bench for each operation type (arithmetic, load and store, branch and jump) and one final test bench to validate a factorial program.
+
+\FloatBarrier
+\begin{table}[htbp]
+	\caption{Testbench 1} %Testbench 1
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\multicolumn{3}{|c|}{\textbf{Instructions}} \\
+		%\cline{2-4} 
+		\hline
+		ADD&Subtraction (SUB)&AND  \\
+		\hline
+		NOR&OR&Set Less Than (SLT) \\
+		\hline
+		Add Immediate&Subtraction Inmediate & AND Inmediate \\
+		(ADDI) &(SUBI) & (ANDI) \\
+		\hline
+		OR Immediate&Set Less Than Immediate&  \\
+		(ORI)&(SLTI)& --- \\
+		\hline
+	\end{tabular}
+	\label{tab_test1}
+\end{table}
+\FloatBarrier
+
+\FloatBarrier
+\begin{table}[t]
+	\caption{Testbench 2} %Testbench 2
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{\textbf{Instructions}} \\
+			%\cline{2-4} 
+			\hline
+			Store Byte&Store Halfword&Store Word\\
+			(SB)&(SH)&(SW)  \\
+			\hline
+			Load Byte&Load Halfword&Load Word\\
+			(LB)&(LH)&(LW) \\
+			\hline
+			Load Upper Inmediate&&\\
+			(LUI)&& \\
+			\hline
+		\end{tabular}
+		\label{tab_test2}
+	\end{center}
+\end{table}
+\FloatBarrier
+
+\FloatBarrier
+\begin{table}[htbp]
+	\caption{Testbench 3} %Testbench 3
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{\textbf{Instructions}} \\
+			%\cline{2-4} 
+			\hline
+			Branch On Equal&Branch On Not Equal&Branch On Greater \\
+			(BEQ)&(BNEQ)&than equal zero (BGEZ)  \\
+			\hline
+			Jump&Jump and Link&Jump Register\\
+			(J)&(JAL)&(JR) \\
+			\hline
+		\end{tabular}
+		\label{tab_test3}
+	\end{center}
+\end{table}
+\FloatBarrier
+
+To get a more a realistic test of the processor implemented, It will execute a C program that do a factorial operation (figure 2). The factorial program will use a variety of  intructions implemented including recursivity technique, it will be the test bench 4.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.8]{factorial_c.png}
+\caption{Factorial function - C code.}
+\label{fact_c}
+\end{center}
+\end{figure}
+
+The factorial program on MIPS is shown in figure 3.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.45]{MIPS_Factorial.png}
+\caption{Factorial program on MIPS.}
+\label{fact_mips}
+\end{center}
+\end{figure}
+ 
+%EVALUATION SECTION
+\section{Evaluation}
+
+According to the proposed set of test bench, We calculate the CPU time \cite{b3} (time processing) for each test bench considering the following equation:
+\[Time = PI * CPI * Clock Cycle Time\] 
+
+Time means execution time measured in seconds per program. PI is Program Instructions (instructions executed for the program), CPI is Clock Cycles per instruction and Clock Cycle time measured in seconds per clock cycle.
+
+We executed the test bench 1, 2, 3 and 4, the results regarding to CPU time is show in table VIII
+
+\begin{table}[h]
+	\caption{CPU Time} %Clock cycles
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			&Total&Total of executed&Clock&Clock&CPU\\
+			&instructions&instructions&Cycles&Cycle Time&Time\\
+			&&(Expected)&&(ns)&(ns)\\
+			\hline
+			Test bench 1&11&11&11&10&110\\
+			\hline
+			Test bench 2&7&7&7&10&70\\
+			\hline
+			Test bench 3&20&100&100&10&1000\\
+			\hline
+			Test bench 4&18&131&131&10&1310\\
+			\hline
+		\end{tabular}
+		\label{tab_test3}
+	\end{center}
+\end{table}
+
+\begin{figure}[h]
+\includegraphics[scale=0.33]{test_bench_1.png}
+\caption{Execution results for test bench 1.}
+\label{result1}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.55]{test_bench_2.png}
+\caption{Execution results for test bench 2.}
+\label{result_factorial}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.5]{test_bench_3.png}
+\caption{Execution results for test bench 3.}
+\label{result2}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.5]{test_bench_4_factorial.png}
+\caption{Execution results for test bench 4 (Factorial of 10).}
+\label{result3}
+\end{figure}
+
+The results and outputs of Fig. 4, Fig. 5, Fig6, and Fig. 7. are consistent with the results shown in Table VIII, we obtain the expected amount of clock cycles and the time for each test.
+ 
+%CONCLUSION SECTION
+\section{Conclusion}
+\begin{itemize}
+\item A team of 2 undergraduates designed and implemented and tested a 32-bits MIPS processor. The implementation was completed as part of an academic semester-long Computer Architecture course.
+\item This implementation of single-cycle datapath is a close replica of the original in the early days of RISC architecture. Nowadays this approach show limitations of performance due to the execution of 1 instruction per cycle and this implementation is not considering pipeline technique to improve the performance.
+\item The implementation successfully passed all tests bench including a factorial program which used many components of the architecture.
+\end{itemize}
+%COMMENTS SECTION
+\section{Comments}
+\begin{itemize}
+\item One of the most challenging actitivities of this project was translate a factorial program from C to machine language, because it required test our whole implementation. This included grasp the real work done behind the scenes for some MIPS instructions like jr or jal.
+\item To find and fix bugs we had to have clear outputs (monitor statement) in our test bench and also have a clear understanding of the value (actual data) of the registers.
+\item The choice of using icarus verilog was natural to us since we prefered the flexibility of a console environment in a Linux system.
+\end{itemize}
+
+\begin{thebibliography}{00}
+\bibitem{b1} M. Horowitz, et. al., "MIPS-X: 20-MIPS peak, 32 bits microprocessor," IEEEJournal of Solid-State Circuits, vol. 22, no. 5, pp. 790-799, Oct. 1987.
+\bibitem{b2} IEEE Standard for Verilog Hardware Description Language. IEEE Standard 1364-2005 (Revision of IEEE Standard 1364-2001). \url{http://dx.doi.org/10.1109/IEEESTD.2006.99495}, 2006. Last access 26 November 2018.
+\bibitem{b3} Patterson, D., Hennessy, J. and Alexander, P. (2012). Computer organization and design. 4th ed. Waltham, Mass: Morgan Kaufmann, pp.35.
+\end{thebibliography}
+\vspace{12pt}
+
+\end{document}
