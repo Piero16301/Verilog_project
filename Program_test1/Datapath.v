@@ -103,6 +103,8 @@ always @(posedge clk) begin
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
+        reg_1 <= reg_file[pos_read1];
+        reg_2 <= s_extend;
         temp_op = reg_file[pos_read1] + s_extend;
         result = {temp_op[31:0]};
         overflow = temp_op[32];
@@ -112,6 +114,8 @@ always @(posedge clk) begin
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
+        reg_1 <= reg_file[pos_read1];
+        reg_2 <= s_extend;
         temp_op = reg_file[pos_read1] - s_extend;
         result = {temp_op[31:0]};
         overflow = temp_op[32];
@@ -121,6 +125,8 @@ always @(posedge clk) begin
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
+        reg_1 <= reg_file[pos_read1];
+        reg_2 <= s_extend;
         result = reg_file[pos_read1] & s_extend;
         overflow = 1'b0;
     end
@@ -129,6 +135,8 @@ always @(posedge clk) begin
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
+        reg_1 <= reg_file[pos_read1];
+        reg_2 <= s_extend;
         result = reg_file[pos_read1] | s_extend;
         overflow = 1'b0;
     end
@@ -137,6 +145,8 @@ always @(posedge clk) begin
         pos_read1 = {instruction[25:21]};
         pos_write = {instruction[20:16]};
         s_extend = {extend_16,instruction[15:0]};
+        reg_1 <= reg_file[pos_read1];
+        reg_2 <= s_extend;
         result = (reg_file[pos_read1] < s_extend) ? (32'd1) : (32'd0);
         overflow = 1'b0;
     end

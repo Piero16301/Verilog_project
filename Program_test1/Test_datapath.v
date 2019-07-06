@@ -19,12 +19,113 @@ module tb1();
                 end
         end
 
-    integer j = 0;
-
     always @(*) begin
         if (clk == 1) begin
-            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b",clk,reg_1,reg_2,result,pc,opcode);
-            j = j + 1;
+
+            case(opcode)
+
+            6'b000000: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: R-ADD",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b000001: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: R-SUB",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b000010: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: R-AND",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b000011: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: R-NOR",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b000100: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: R-OR",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b000101: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: R-SLT",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b000110: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: I-ADDI",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b000111: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: I-SUBI",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b001000: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: I-ANDI",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b001001: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: I-ORI",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b001010: begin
+            $monitor("Clock: %b Reg 1: %d Reg 2: %d Result: %d PC: %d Opcode: %b Type: I-SLTI",clk,reg_1,reg_2,result,pc,opcode);
+            end
+
+            6'b001011: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: I-LB",clk,result,pc,opcode);
+            end
+
+            6'b001100: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: I-LH",clk,result,pc,opcode);
+            end
+
+            6'b001101: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: I-LW",clk,result,pc,opcode);
+            end
+
+            6'b001110: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: I-LUI",clk,result,pc,opcode);
+            end
+
+            6'b001111: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: R-MUL",clk,result,pc,opcode);
+            end
+
+            6'b010000: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: I-SB",clk,result,pc,opcode);
+            end
+
+            6'b010001: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: I-SH",clk,result,pc,opcode);
+            end
+
+            6'b010010: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: I-SW",clk,result,pc,opcode);
+            end
+
+            6'b010011: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: I-BEQ",clk,result,pc,opcode);
+            end
+
+            6'b010100: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: I-BNEQ",clk,result,pc,opcode);
+            end
+
+            6'b010101: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: I-BGEZ",clk,result,pc,opcode);
+            end
+
+            6'b010110: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: J-J",clk,result,pc,opcode);
+            end
+
+            6'b010111: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: J-JAL",clk,result,pc,opcode);
+            end
+
+            6'b011000: begin
+            $monitor("Clock: %b Result: %d PC: %d Opcode: %b Type: R-JR",clk,result,pc,opcode);
+            end
+
+            endcase
+
         end
 
         else
